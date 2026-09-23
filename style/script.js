@@ -51,7 +51,7 @@ drawStars();
 
 const constellations = [
   {
-    name: "Capricorn (Ma Kết)",
+    name: "Capricorn ()",
     image: "style/Capricorn.png",
     description:
       "Ma Kết là người sống có trách nhiệm, kiên trì và đầy tham vọng..."
@@ -86,28 +86,32 @@ const constellationName = document.getElementById("constellationName");
 const constellationDescription = document.getElementById("constellationDescription");
 
 let typingTimeout;
+let isTyping = false;
 
-function typeWriter(text, element, callback) {
+function typeWriter(text, element) {
+  if (isTyping) {
+    clearTimeout(typingTimeout);
+    element.textContent = text;
+    isTyping = false;
+    typingTimeout = null;
+    return;
+  }
+
   element.textContent = "";
   element.style.opacity = 1;
 
   let i = 0;
   const speed = 40;
-
-  if (typingTimeout) {
-    clearTimeout(typingTimeout);
-  }
+  isTyping = true;
 
   function type() {
     if (i < text.length) {
       element.textContent += text.charAt(i);
       i++;
-
       typingTimeout = setTimeout(type, speed);
     } else {
+      isTyping = false;
       typingTimeout = null;
-
-      if (callback) callback();
     }
   }
 
@@ -123,7 +127,8 @@ function updateConstellationImage() {
     clearTimeout(typingTimeout);
     typingTimeout = null;
   }
-
+isTyping = false;
+  
   constellationDescription.textContent = "";
 
   setTimeout(() => {
@@ -141,15 +146,7 @@ function updateConstellationImage() {
 
 function showDescription() {
   const data = constellations[currentIndex];
-
-  if (typingTimeout) {
-    clearTimeout(typingTimeout);
-    typingTimeout = null;
-  }
-
-  constellationDescription.textContent = "";
   constellationDescription.style.opacity = 1;
-
   typeWriter(data.description, constellationDescription);
 }
 
