@@ -51,28 +51,28 @@ drawStars();
 
 const constellations = [
   {
-    name: "Capricorn",
+    name: "Capricorn (Ma Kết)",
     image: "style/Capricorn.png",
     description:
       "Ma Kết là người sống có trách nhiệm, kiên trì và đầy tham vọng..."
   },
 
   {
-    name: "Aquarius",
+    name: "Aquarius (Bảo Bình)",
     image: "style/Aquarius.png",
     description:
       "Bảo Bình là biểu tượng của sự sáng tạo, độc lập và tư duy tiên phong..."
   },
 
   {
-    name: "Pisces",
+    name: "Pisces (Song Ngư)",
     image: "style/Pisces.png",
     description:
       "Song Ngư là người giàu cảm xúc, mơ mộng và đầy lòng trắc ẩn..."
   },
 
   {
-    name: "Aries",
+    name: "Aries (Bạch Dương)",
     image: "style/Aries.png",
     description:
       "Bạch Dương là người năng động, nhiệt huyết và đầy quyết đoán..."
